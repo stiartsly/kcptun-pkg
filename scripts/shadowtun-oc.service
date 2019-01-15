@@ -1,0 +1,17 @@
+[Unit]
+Description=ShadowTunnel for OpenConnect
+After=network-online.target
+
+[Service]
+Type=simple
+RuntimeDirectory=shadowtun
+RuntimeDirectoryMode=755
+WorkingDirectory=/var/lib/shadowtun
+ExecStart=/usr/bin/shadowtun-prog -c /etc/shadowtun/oc.conf
+User=shadowtun
+Group=shadowtun
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+Package: ShadowTunnel
+Source: iwhisper.io
+Version: 1.0.build-date+deb9u1
+Architecture: target-arch
+Maintainer: Jingyu Niu <jyniu@hotmail.com>
+Installed-Size: 10000
+Pre-Depends: adduser
+Depends: lsb-base (>= 3.0), init-system-helpers (>= 1.18~), libc6 (>= 2.14), libsystemd0
+Homepage: https://www.iwhisper.io/
+Description: ShadowTunnel service (daemon)
+ ShadowTunnel is a stable & secure tunnel based On KCP with N:M multiplexing.
+ .
+ This package contains the ShadowTunnel service.

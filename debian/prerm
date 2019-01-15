@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_installinit
+if [ -x "/etc/init.d/shadowtun-ss" ]; then
+	invoke-rc.d shadowtun-ss stop || exit $?
+fi
+
+if [ -x "/etc/init.d/shadowtun-oc" ]; then
+	invoke-rc.d shadowtun-oc stop || exit $?
+fi
+# End automatically added section

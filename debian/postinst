@@ -1,0 +1,86 @@
+#!/bin/sh
+
+set -e
+
+test $DEBIAN_SCRIPT_DEBUG && set -v -x
+
+chperms() {
+	# chperms <user> <group> <perms> <file>
+	if ! OVERRIDE=`dpkg-statoverride --list $4 2>&1`; then
+		if [ -e $4 ]; then
+			chown $1:$2 $4
+			chmod $3 $4
+		fi
+	fi
+}
+
+case "$1" in
+  configure)
+	if ! getent passwd shadowtun > /dev/null; then
+		adduser --system \
+				--quiet \
+				--group \
+				--no-create-home \
+				--disabled-password \
+				--home /var/lib/shadowtun \
+				shadowtun
+	fi
+
+	chperms shadowtun shadowtun 0775 /var/lib/shadowtun
+
+	chperms root shadowtun 0755 /etc/shadowtun
+
+	chperms root shadowtun 0644 /etc/shadowtun/ss.conf
+
+	chperms root shadowtun 0644 /etc/shadowtun/oc.conf
+
+  ;;
+esac
+
+# Automatically added by dh_systemd_enable
+# This will only remove masks created by d-s-h on package removal.
+deb-systemd-helper unmask shadowtun-ss.service >/dev/null || true
+
+# was-enabled defaults to true, so new installations run enable.
+if deb-systemd-helper --quiet was-enabled shadowtun-ss.service; then
+	# Enables the unit on first installation, creates new
+	# symlinks on upgrades if the unit file has changed.
+	deb-systemd-helper enable shadowtun-ss.service >/dev/null || true
+else
+	# Update the statefile to add new symlinks (if any), which need to be
+	# cleaned up on purge. Also remove old symlinks.
+	deb-systemd-helper update-state shadowtun-ss.service >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installinit
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
+	if [ -x "/etc/init.d/shadowtun-ss" ]; then
+		update-rc.d shadowtun-ss defaults >/dev/null
+		invoke-rc.d shadowtun-ss start || exit $?
+	fi
+fi
+
+deb-systemd-helper unmask shadowtun-oc.service >/dev/null || true
+
+# was-enabled defaults to true, so new installations run enable.
+if deb-systemd-helper --quiet was-enabled shadowtun-oc.service; then
+	# Enables the unit on first installation, creates new
+	# symlinks on upgrades if the unit file has changed.
+	deb-systemd-helper enable shadowtun-oc.service >/dev/null || true
+else
+	# Update the statefile to add new symlinks (if any), which need to be
+	# cleaned up on purge. Also remove old symlinks.
+	deb-systemd-helper update-state shadowtun-oc.service >/dev/null || true
+fi
+# End automatically added section
+# Automatically added by dh_installinit
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ]; then
+	if [ -x "/etc/init.d/shadowtun-oc" ]; then
+		update-rc.d shadowtun-oc defaults >/dev/null
+		invoke-rc.d shadowtun-oc start || exit $?
+	fi
+fi
+# End automatically added section
+
+
+exit 0;
