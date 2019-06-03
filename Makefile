@@ -1,5 +1,6 @@
 BUILD_DIR=$(PWD)/build
 INT_DIR=${BUILD_DIR}/int
+BIN_DIR=${INT_DIR}/go/src/github.com/xtaci/kcptun/build
 DIST_DIR=${BUILD_DIR}/dist
 
 export GOPATH=${INT_DIR}/go
@@ -12,8 +13,8 @@ mkpkg: server-amd64 client-amd64 server-arm7 client-arm7
 
 server-amd64: ${INT_DIR}/kcptun
 	mkdir -p $(DIST_DIR)/server-debian-amd64/usr/bin
-	cp ${INT_DIR}/server_linux_amd64 $(DIST_DIR)/server-debian-amd64/usr/bin/shadowtun-server
-	cp ${INT_DIR}/client_linux_amd64 $(DIST_DIR)/server-debian-amd64/usr/bin/shadowtun-client
+	cp ${BIN_DIR}/server_linux_amd64 $(DIST_DIR)/server-debian-amd64/usr/bin/shadowtun-server
+	cp ${BIN_DIR}/client_linux_amd64 $(DIST_DIR)/server-debian-amd64/usr/bin/shadowtun-client
 	mkdir -p $(DIST_DIR)/server-debian-amd64/etc/shadowtun
 	cp config/ss-server.conf $(DIST_DIR)/server-debian-amd64/etc/shadowtun/ss.conf
 	cp config/oc-server.conf $(DIST_DIR)/server-debian-amd64/etc/shadowtun/oc.conf
@@ -39,8 +40,8 @@ server-amd64: ${INT_DIR}/kcptun
 
 client-amd64: ${INT_DIR}/kcptun
 	mkdir -p $(DIST_DIR)/client-debian-amd64/usr/bin
-	cp ${INT_DIR}/server_linux_amd64 $(DIST_DIR)/client-debian-amd64/usr/bin/shadowtun-server
-	cp ${INT_DIR}/client_linux_amd64 $(DIST_DIR)/client-debian-amd64/usr/bin/shadowtun-client
+	cp ${BIN_DIR}/server_linux_amd64 $(DIST_DIR)/client-debian-amd64/usr/bin/shadowtun-server
+	cp ${BIN_DIR}/client_linux_amd64 $(DIST_DIR)/client-debian-amd64/usr/bin/shadowtun-client
 	mkdir -p $(DIST_DIR)/client-debian-amd64/etc/shadowtun
 	cp config/ss-client.conf $(DIST_DIR)/client-debian-amd64/etc/shadowtun/ss.conf
 	cp config/oc-client.conf $(DIST_DIR)/client-debian-amd64/etc/shadowtun/oc.conf
@@ -66,8 +67,8 @@ client-amd64: ${INT_DIR}/kcptun
 
 server-arm7: ${INT_DIR}/kcptun
 	mkdir -p $(DIST_DIR)/server-debian-arm7/usr/bin
-	cp ${INT_DIR}/server_linux_arm7 $(DIST_DIR)/server-debian-arm7/usr/bin/shadowtun-server
-	cp ${INT_DIR}/client_linux_arm7 $(DIST_DIR)/server-debian-arm7/usr/bin/shadowtun-client
+	cp ${BIN_DIR}/server_linux_arm7 $(DIST_DIR)/server-debian-arm7/usr/bin/shadowtun-server
+	cp ${BIN_DIR}/client_linux_arm7 $(DIST_DIR)/server-debian-arm7/usr/bin/shadowtun-client
 	mkdir -p $(DIST_DIR)/server-debian-arm7/etc/shadowtun
 	cp config/ss-server.conf $(DIST_DIR)/server-debian-arm7/etc/shadowtun/ss.conf
 	cp config/oc-server.conf $(DIST_DIR)/server-debian-arm7/etc/shadowtun/oc.conf
@@ -93,8 +94,8 @@ server-arm7: ${INT_DIR}/kcptun
 
 client-arm7: ${INT_DIR}/kcptun
 	mkdir -p $(DIST_DIR)/client-debian-arm7/usr/bin
-	cp ${INT_DIR}/server_linux_arm7 $(DIST_DIR)/client-debian-arm7/usr/bin/shadowtun-server
-	cp ${INT_DIR}/client_linux_arm7 $(DIST_DIR)/client-debian-arm7/usr/bin/shadowtun-client
+	cp ${BIN_DIR}/server_linux_arm7 $(DIST_DIR)/client-debian-arm7/usr/bin/shadowtun-server
+	cp ${BIN_DIR}/client_linux_arm7 $(DIST_DIR)/client-debian-arm7/usr/bin/shadowtun-client
 	mkdir -p $(DIST_DIR)/client-debian-arm7/etc/shadowtun
 	cp config/ss-client.conf $(DIST_DIR)/client-debian-arm7/etc/shadowtun/ss.conf
 	cp config/oc-client.conf $(DIST_DIR)/client-debian-arm7/etc/shadowtun/oc.conf
@@ -126,4 +127,5 @@ ${INT_DIR}/kcptun-src:
 	mkdir -p ${INT_DIR}
 	mkdir -p ${GOPATH}
 	cd ${INT_DIR} && go get -u github.com/xtaci/kcptun/...
-	touch ${INT_DIR}/kcptu-src
+	rm ${INT_DIT}/github.com/xtaci/kcptun/build/*
+	touch ${INT_DIR}/kcptun-src
