@@ -1,6 +1,6 @@
 BUILD_DIR=$(PWD)/build
 INT_DIR=${BUILD_DIR}/int
-BIN_DIR=${INT_DIR}/go/src/github.com/xtaci/kcptun/build
+BIN_DIR=${INT_DIR}/kcptun/build
 DIST_DIR=${BUILD_DIR}/dist
 
 export GOPATH=${INT_DIR}/go
@@ -120,12 +120,12 @@ client-arm7: ${INT_DIR}/kcptun
 	fakeroot dpkg-deb --build $(DIST_DIR)/client-debian-arm7 $(DIST_DIR)/shadowtun-client-arm7.deb
 
 ${INT_DIR}/kcptun: ${INT_DIR}/kcptun-src
-	cd ${INT_DIR} && go/src/github.com/xtaci/kcptun/build-release.sh
+	cd ${INT_DIR}/kcptun && ./build-release.sh
 	touch ${INT_DIR}/kcptun
 
 ${INT_DIR}/kcptun-src:
 	mkdir -p ${INT_DIR}
 	mkdir -p ${GOPATH}
-	cd ${INT_DIR} && go get -u github.com/xtaci/kcptun/...
-	rm ${INT_DIT}/github.com/xtaci/kcptun/build/*
+	cd ${INT_DIR} && git clone --branch v20200409 https://github.com/xtaci/kcptun.git
+	rm -rf ${INT_DIT}/kcptun/build/*
 	touch ${INT_DIR}/kcptun-src
