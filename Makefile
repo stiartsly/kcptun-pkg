@@ -218,6 +218,6 @@ ${INT_DIR}/kcptun: ${INT_DIR}/kcptun-src
 ${INT_DIR}/kcptun-src:
 	mkdir -p ${INT_DIR}
 	mkdir -p ${GOPATH}
-	cd ${INT_DIR} && git clone --branch v20200409 https://github.com/xtaci/kcptun.git
+	cd ${INT_DIR} && git clone --branch v20210624 https://github.com/xtaci/kcptun.git
 	rm -rf ${INT_DIT}/kcptun/build/*
 	touch ${INT_DIR}/kcptun-src
