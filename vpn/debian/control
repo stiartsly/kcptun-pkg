@@ -1,6 +1,6 @@
 Package: ShadowTunnel
 Source: iwhisper.io
-Version: 1.0.build-date+deb9u1
+Version: 1.0.version-string+deb9u1
 Architecture: target-arch
 Maintainer: Jingyu Niu <jyniu@hotmail.com>
 Installed-Size: 10000

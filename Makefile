@@ -5,7 +5,7 @@ DIST_DIR=${BUILD_DIR}/dist
 
 export GOPATH=${INT_DIR}/go
 
-BUILD_DATE=`date +%Y%m%d`
+VERSION=v20210922
 
 all: mkpkg
 
@@ -37,7 +37,7 @@ vpn-server-amd64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/vpn-server-debian-amd64/lib/systemd/system/shadowtun-ss.service
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/vpn-server-debian-amd64/lib/systemd/system/shadowtun-oc.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/vpn-server-debian-amd64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/vpn-server-debian-amd64/DEBIAN/control
 	sed -i "s%target\-arch%amd64%" $(DIST_DIR)/vpn-server-debian-amd64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-server-debian-amd64 $(DIST_DIR)/vpn-shadowtun-server-amd64.deb
@@ -64,7 +64,7 @@ vpn-client-amd64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/vpn-client-debian-amd64/lib/systemd/system/shadowtun-ss.service
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/vpn-client-debian-amd64/lib/systemd/system/shadowtun-oc.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/vpn-client-debian-amd64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/vpn-client-debian-amd64/DEBIAN/control
 	sed -i "s%target\-arch%amd64%" $(DIST_DIR)/vpn-client-debian-amd64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-client-debian-amd64 $(DIST_DIR)/vpn-shadowtun-client-amd64.deb
@@ -91,7 +91,7 @@ vpn-server-arm7: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/vpn-server-debian-arm7/lib/systemd/system/shadowtun-ss.service
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/vpn-server-debian-arm7/lib/systemd/system/shadowtun-oc.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/vpn-server-debian-arm7/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/vpn-server-debian-arm7/DEBIAN/control
 	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/vpn-server-debian-arm7/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-server-debian-arm7 $(DIST_DIR)/vpn-shadowtun-server-arm7.deb
@@ -118,7 +118,7 @@ vpn-client-arm7: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/vpn-client-debian-arm7/lib/systemd/system/shadowtun-ss.service
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/vpn-client-debian-arm7/lib/systemd/system/shadowtun-oc.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/vpn-client-debian-arm7/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/vpn-client-debian-arm7/DEBIAN/control
 	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/vpn-client-debian-arm7/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-client-debian-arm7 $(DIST_DIR)/vpn-shadowtun-client-arm7.deb
@@ -145,8 +145,8 @@ vpn-server-arm64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/vpn-server-debian-arm64/lib/systemd/system/shadowtun-ss.service
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/vpn-server-debian-arm64/lib/systemd/system/shadowtun-oc.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/vpn-server-debian-arm64/DEBIAN/control
-	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/vpn-server-debian-arm64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/vpn-server-debian-arm64/DEBIAN/control
+	sed -i "s%target\-arch%arm64%" $(DIST_DIR)/vpn-server-debian-arm64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-server-debian-arm64 $(DIST_DIR)/vpn-shadowtun-server-arm64.deb
 
@@ -172,8 +172,8 @@ vpn-client-arm64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/vpn-client-debian-arm64/lib/systemd/system/shadowtun-ss.service
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/vpn-client-debian-arm64/lib/systemd/system/shadowtun-oc.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/vpn-client-debian-arm64/DEBIAN/control
-	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/vpn-client-debian-arm64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/vpn-client-debian-arm64/DEBIAN/control
+	sed -i "s%target\-arch%arm64%" $(DIST_DIR)/vpn-client-debian-arm64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-client-debian-arm64 $(DIST_DIR)/vpn-shadowtun-client-arm64.deb
 
@@ -194,7 +194,7 @@ std-server-amd64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/std-server-debian-amd64/etc/init.d/shadowtun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/std-server-debian-amd64/lib/systemd/system/shadowtun.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/std-server-debian-amd64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/std-server-debian-amd64/DEBIAN/control
 	sed -i "s%target\-arch%amd64%" $(DIST_DIR)/std-server-debian-amd64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-server-debian-amd64 $(DIST_DIR)/std-shadowtun-server-amd64.deb
@@ -216,7 +216,7 @@ std-client-amd64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/std-client-debian-amd64/etc/init.d/shadowtun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/std-client-debian-amd64/lib/systemd/system/shadowtun.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/std-client-debian-amd64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/std-client-debian-amd64/DEBIAN/control
 	sed -i "s%target\-arch%amd64%" $(DIST_DIR)/std-client-debian-amd64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-client-debian-amd64 $(DIST_DIR)/std-shadowtun-client-amd64.deb
@@ -238,7 +238,7 @@ std-server-arm7: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/std-server-debian-arm7/etc/init.d/shadowtun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/std-server-debian-arm7/lib/systemd/system/shadowtun.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/std-server-debian-arm7/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/std-server-debian-arm7/DEBIAN/control
 	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/std-server-debian-arm7/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-server-debian-arm7 $(DIST_DIR)/std-shadowtun-server-arm7.deb
@@ -260,7 +260,7 @@ std-client-arm7: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/std-client-debian-arm7/etc/init.d/shadowtun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/std-client-debian-arm7/lib/systemd/system/shadowtun.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/std-client-debian-arm7/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/std-client-debian-arm7/DEBIAN/control
 	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/std-client-debian-arm7/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-client-debian-arm7 $(DIST_DIR)/std-shadowtun-client-arm7.deb
@@ -282,8 +282,8 @@ std-server-arm64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/std-server-debian-arm64/etc/init.d/shadowtun
 	sed -i "s%shadowtun\-prog%shadowtun\-server%" $(DIST_DIR)/std-server-debian-arm64/lib/systemd/system/shadowtun.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/std-server-debian-arm64/DEBIAN/control
-	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/std-server-debian-arm64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/std-server-debian-arm64/DEBIAN/control
+	sed -i "s%target\-arch%arm64%" $(DIST_DIR)/std-server-debian-arm64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-server-debian-arm64 $(DIST_DIR)/std-shadowtun-server-arm64.deb
 
@@ -304,8 +304,8 @@ std-client-arm64: ${INT_DIR}/kcptun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/std-client-debian-arm64/etc/init.d/shadowtun
 	sed -i "s%shadowtun\-prog%shadowtun\-client%" $(DIST_DIR)/std-client-debian-arm64/lib/systemd/system/shadowtun.service
 
-	sed -i "s%build\-date%${BUILD_DATE}%" $(DIST_DIR)/std-client-debian-arm64/DEBIAN/control
-	sed -i "s%target\-arch%armhf%" $(DIST_DIR)/std-client-debian-arm64/DEBIAN/control
+	sed -i "s%version\-string%${VERSION}%" $(DIST_DIR)/std-client-debian-arm64/DEBIAN/control
+	sed -i "s%target\-arch%arm64%" $(DIST_DIR)/std-client-debian-arm64/DEBIAN/control
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-client-debian-arm64 $(DIST_DIR)/std-shadowtun-client-arm64.deb
 
@@ -316,6 +316,6 @@ ${INT_DIR}/kcptun: ${INT_DIR}/kcptun-src
 ${INT_DIR}/kcptun-src:
 	mkdir -p ${INT_DIR}
 	mkdir -p ${GOPATH}
-	cd ${INT_DIR} && git clone --branch v20210624 https://github.com/xtaci/kcptun.git
+	cd ${INT_DIR} && git clone --branch ${VERSION} https://github.com/xtaci/kcptun.git
 	rm -rf ${INT_DIT}/kcptun/build/*
 	touch ${INT_DIR}/kcptun-src
