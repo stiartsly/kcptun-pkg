@@ -15,7 +15,7 @@ vpn: vpn-server-amd64 vpn-client-amd64 vpn-server-arm64 vpn-client-arm64 vpn-ser
 
 std: std-server-amd64 std-client-amd64 std-server-arm64 std-client-arm64 std-server-arm7 std-client-arm7
 
-vpn-server-amd64: ${INT_DIR}/kcptun
+vpn-server-amd64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/vpn-server-debian-amd64/usr/bin
 	cp ${BIN_DIR}/server_linux_amd64 $(DIST_DIR)/vpn-server-debian-amd64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_amd64 $(DIST_DIR)/vpn-server-debian-amd64/usr/bin/shadowtun-client
@@ -42,7 +42,7 @@ vpn-server-amd64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-server-debian-amd64 $(DIST_DIR)/vpn-shadowtun-server-amd64.deb
 
-vpn-client-amd64: ${INT_DIR}/kcptun
+vpn-client-amd64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/vpn-client-debian-amd64/usr/bin
 	cp ${BIN_DIR}/server_linux_amd64 $(DIST_DIR)/vpn-client-debian-amd64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_amd64 $(DIST_DIR)/vpn-client-debian-amd64/usr/bin/shadowtun-client
@@ -69,7 +69,7 @@ vpn-client-amd64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-client-debian-amd64 $(DIST_DIR)/vpn-shadowtun-client-amd64.deb
 
-vpn-server-arm7: ${INT_DIR}/kcptun
+vpn-server-arm7: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/vpn-server-debian-arm7/usr/bin
 	cp ${BIN_DIR}/server_linux_arm7 $(DIST_DIR)/vpn-server-debian-arm7/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm7 $(DIST_DIR)/vpn-server-debian-arm7/usr/bin/shadowtun-client
@@ -96,7 +96,7 @@ vpn-server-arm7: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-server-debian-arm7 $(DIST_DIR)/vpn-shadowtun-server-arm7.deb
 
-vpn-client-arm7: ${INT_DIR}/kcptun
+vpn-client-arm7: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/vpn-client-debian-arm7/usr/bin
 	cp ${BIN_DIR}/server_linux_arm7 $(DIST_DIR)/vpn-client-debian-arm7/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm7 $(DIST_DIR)/vpn-client-debian-arm7/usr/bin/shadowtun-client
@@ -123,7 +123,7 @@ vpn-client-arm7: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-client-debian-arm7 $(DIST_DIR)/vpn-shadowtun-client-arm7.deb
 
-vpn-server-arm64: ${INT_DIR}/kcptun
+vpn-server-arm64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/vpn-server-debian-arm64/usr/bin
 	cp ${BIN_DIR}/server_linux_arm64 $(DIST_DIR)/vpn-server-debian-arm64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm64 $(DIST_DIR)/vpn-server-debian-arm64/usr/bin/shadowtun-client
@@ -150,7 +150,7 @@ vpn-server-arm64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-server-debian-arm64 $(DIST_DIR)/vpn-shadowtun-server-arm64.deb
 
-vpn-client-arm64: ${INT_DIR}/kcptun
+vpn-client-arm64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/vpn-client-debian-arm64/usr/bin
 	cp ${BIN_DIR}/server_linux_arm64 $(DIST_DIR)/vpn-client-debian-arm64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm64 $(DIST_DIR)/vpn-client-debian-arm64/usr/bin/shadowtun-client
@@ -177,7 +177,7 @@ vpn-client-arm64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/vpn-client-debian-arm64 $(DIST_DIR)/vpn-shadowtun-client-arm64.deb
 
-std-server-amd64: ${INT_DIR}/kcptun
+std-server-amd64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/std-server-debian-amd64/usr/bin
 	cp ${BIN_DIR}/server_linux_amd64 $(DIST_DIR)/std-server-debian-amd64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_amd64 $(DIST_DIR)/std-server-debian-amd64/usr/bin/shadowtun-client
@@ -199,7 +199,7 @@ std-server-amd64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-server-debian-amd64 $(DIST_DIR)/std-shadowtun-server-amd64.deb
 
-std-client-amd64: ${INT_DIR}/kcptun
+std-client-amd64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/std-client-debian-amd64/usr/bin
 	cp ${BIN_DIR}/server_linux_amd64 $(DIST_DIR)/std-client-debian-amd64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_amd64 $(DIST_DIR)/std-client-debian-amd64/usr/bin/shadowtun-client
@@ -221,7 +221,7 @@ std-client-amd64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-client-debian-amd64 $(DIST_DIR)/std-shadowtun-client-amd64.deb
 
-std-server-arm7: ${INT_DIR}/kcptun
+std-server-arm7: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/std-server-debian-arm7/usr/bin
 	cp ${BIN_DIR}/server_linux_arm7 $(DIST_DIR)/std-server-debian-arm7/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm7 $(DIST_DIR)/std-server-debian-arm7/usr/bin/shadowtun-client
@@ -243,7 +243,7 @@ std-server-arm7: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-server-debian-arm7 $(DIST_DIR)/std-shadowtun-server-arm7.deb
 
-std-client-arm7: ${INT_DIR}/kcptun
+std-client-arm7: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/std-client-debian-arm7/usr/bin
 	cp ${BIN_DIR}/server_linux_arm7 $(DIST_DIR)/std-client-debian-arm7/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm7 $(DIST_DIR)/std-client-debian-arm7/usr/bin/shadowtun-client
@@ -265,7 +265,7 @@ std-client-arm7: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-client-debian-arm7 $(DIST_DIR)/std-shadowtun-client-arm7.deb
 
-std-server-arm64: ${INT_DIR}/kcptun
+std-server-arm64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/std-server-debian-arm64/usr/bin
 	cp ${BIN_DIR}/server_linux_arm64 $(DIST_DIR)/std-server-debian-arm64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm64 $(DIST_DIR)/std-server-debian-arm64/usr/bin/shadowtun-client
@@ -287,7 +287,7 @@ std-server-arm64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-server-debian-arm64 $(DIST_DIR)/std-shadowtun-server-arm64.deb
 
-std-client-arm64: ${INT_DIR}/kcptun
+std-client-arm64: ${INT_DIR}/kcptun-bin
 	mkdir -p $(DIST_DIR)/std-client-debian-arm64/usr/bin
 	cp ${BIN_DIR}/server_linux_arm64 $(DIST_DIR)/std-client-debian-arm64/usr/bin/shadowtun-server
 	cp ${BIN_DIR}/client_linux_arm64 $(DIST_DIR)/std-client-debian-arm64/usr/bin/shadowtun-client
@@ -309,13 +309,14 @@ std-client-arm64: ${INT_DIR}/kcptun
 
 	fakeroot dpkg-deb --build $(DIST_DIR)/std-client-debian-arm64 $(DIST_DIR)/std-shadowtun-client-arm64.deb
 
-${INT_DIR}/kcptun: ${INT_DIR}/kcptun-src
+${INT_DIR}/kcptun-bin: ${INT_DIR}/kcptun-src
 	cd ${INT_DIR}/kcptun && ./build-release.sh
-	touch ${INT_DIR}/kcptun
+	touch ${INT_DIR}/kcptun-bin
 
 ${INT_DIR}/kcptun-src:
 	mkdir -p ${INT_DIR}
 	mkdir -p ${GOPATH}
 	cd ${INT_DIR} && git clone --branch ${VERSION} https://github.com/xtaci/kcptun.git
+	sed -i "s%^VERSION=.*%VERSION=${VERSION}%" $(INT_DIR)/kcptun/build-release.sh
 	rm -rf ${INT_DIT}/kcptun/build/*
 	touch ${INT_DIR}/kcptun-src
