@@ -5,7 +5,7 @@ DIST_DIR=${BUILD_DIR}/dist
 
 export GOPATH=${INT_DIR}/go
 
-VERSION=v20210922
+VERSION=v20220628
 
 all: mkpkg
 
